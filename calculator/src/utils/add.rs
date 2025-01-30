@@ -1,13 +1,16 @@
 use super::error::OVERFLOW_ERROR;
 
+#[allow(dead_code)]
 pub fn add8(a: i8, b: i8) -> Result<i8, &'static str> {
     a.checked_add(b).ok_or(OVERFLOW_ERROR)
 }
 
+#[allow(dead_code)]
 pub fn add32(a: i32, b: i32) -> Result<i32, &'static str> {
     a.checked_add(b).ok_or(OVERFLOW_ERROR)
 }
 
+#[allow(dead_code)]
 pub fn add64(a: i64, b: i64) -> Result<i64, &'static str> {
     a.checked_add(b).ok_or(OVERFLOW_ERROR)
 }
