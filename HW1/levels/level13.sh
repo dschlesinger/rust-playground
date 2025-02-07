@@ -2,7 +2,7 @@ ssh -p 2220 bandit13@bandit.labs.overthewire.org
 
 level13_pass="FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn"
 
-ssh -i sshkey.private bandit12@localhost -p 2220
+ssh -i sshkey.private bandit14@localhost -p 2220
 
 cat /etc/bandit_pass/bandit14
 
