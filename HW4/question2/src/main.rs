@@ -90,4 +90,35 @@ fn main() {
         println!("Generation: {}", gen);
         current_board.print_board();
     }
+
+    // Test that bad senario dies
+    let t1_initial_board: [[bool; 24]; 24] = [[false; 24]; 24];
+    let mut t1_board = Board::new(t1_initial_board);
+    
+    // Setup intial condition
+    let t1_initial_points = vec![(0,0), (0,2), (2,0), (2,2)]; // spaced so all should die
+
+    for p in t1_initial_points {
+        t1_board.board[p.0][p.1] = true;
+    }
+
+    assert_eq!(t1_board.run_generation().board, [[false; 24]; 24]);
+    // Test that good senario is correct
+    let t2_initial_board: [[bool; 24]; 24] = [[false; 24]; 24];
+    let mut t2_board = Board::new(t2_initial_board);
+    
+    // Setup intial condition
+    let t2_initial_points = vec![(0,0), (0,1), (1,0)]; // should form box
+
+    for p in t2_initial_points {
+        t2_board.board[p.0][p.1] = true;
+    }
+
+    let mut answer_board = [[false; 24]; 24];
+    answer_board[0][0] = true;
+    answer_board[1][0] = true;
+    answer_board[0][1] = true;
+    answer_board[1][1] = true;
+
+    assert_eq!(t2_board.run_generation().board, answer_board);
 }
