@@ -121,4 +121,28 @@ fn main() {
     answer_board[1][1] = true;
 
     assert_eq!(t2_board.run_generation().board, answer_board);
+    // Test evaluate function
+    let t3_initial_board: [[bool; 24]; 24] = [[false; 24]; 24];
+    let mut t3_board = Board::new(t3_initial_board);
+    
+    // Test (0, 0) survives
+    let t3_initial_points = vec![(0,0), (0,1), (1,0)]; // should form box
+
+    for p in t3_initial_points {
+        t3_board.board[p.0][p.1] = true;
+    }
+
+    assert_eq!(t3_board.evaluate((0, 0)), true);
+    // Wrap around kills
+    let t4_initial_board: [[bool; 24]; 24] = [[false; 24]; 24];
+    let mut t4_board = Board::new(t4_initial_board);
+    
+    // Test 4 dies
+    let t4_initial_points = vec![(0,0), (0,1), (1,0), (23, 0), (0, 23)]; // should kill (0,0)
+
+    for p in t4_initial_points {
+        t4_board.board[p.0][p.1] = true;
+    }
+    
+    assert_eq!(t4_board.evaluate((0, 0)), false);
 }
