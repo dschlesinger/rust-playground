@@ -24,8 +24,6 @@ fn get_top5(g: &Graph, results: &Vec<i32>) -> Vec<(i32, f32)> {
 fn main() {
     let g: Graph = read_graph("data/pagerank_data.txt");
 
-    // println!("{:?}", _graph.data.get(&0).unwrap().next);
-
     let mut results: Vec<i32> = Vec::with_capacity(90);
 
     for _ in 0..90 {
@@ -49,21 +47,19 @@ mod tests {
 
         let g: Graph = read_graph("data/test2.txt");
 
-    // println!("{:?}", _graph.data.get(&0).unwrap().next);
+        let mut results: Vec<i32> = Vec::with_capacity(90);
 
-    let mut results: Vec<i32> = Vec::with_capacity(90);
+        for _ in 0..90 {
+            results.push(random_walk(&g, None, 90));
+        }
 
-    for _ in 0..90 {
-        results.push(random_walk(&g, None, 90));
-    }
+        let top5 = get_top5(&g, &results);
 
-    let top5 = get_top5(&g, &results);
+        for (vertex, num) in top5.iter() {
+            println!("Vertex {}: approximate PageRank {}", vertex, num);
+        }
 
-    for (vertex, num) in top5.iter() {
-        println!("Vertex {}: approximate PageRank {}", vertex, num);
-    }
-
-    assert_eq!(top5.first().map(|&(i, s)| i), Some(3));
+        assert_eq!(top5.first().map(|&(i, s)| i), Some(3));
         
     }
 }

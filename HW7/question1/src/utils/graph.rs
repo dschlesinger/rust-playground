@@ -25,7 +25,7 @@ pub fn random_walk(g: &Graph, n: Option<i32>, steps: i32) -> i32 {
 
     let mut rng = rand::rng();
     let mut current_node = match n {
-        Some(node_id) => node_id, // Start from given node
+        Some(node_id) => node_id, 
         None => get_random_node(&g), // Pick a random start node
     };
 
