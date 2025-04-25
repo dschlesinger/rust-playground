@@ -7,11 +7,11 @@ pub struct MNIST;
 
 impl MNIST {
     pub fn load_train(&self) -> Result<(Vec<Array2<f32>>, Vec<Array2<f32>>), Box<dyn Error>> {
-        self.load_data("data/mnist_train.csv")
+        self.load_data("mnist/mnist_train.csv")
     }
 
     pub fn load_test(&self) -> Result<(Vec<Array2<f32>>, Vec<Array2<f32>>), Box<dyn Error>> {
-        self.load_data("data/mnist_test.csv")
+        self.load_data("mnist/mnist_test.csv")
     }
 
     pub fn load_data(&self, path: &str) -> Result<(Vec<Array2<f32>>, Vec<Array2<f32>>), Box<dyn Error>> {
