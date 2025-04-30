@@ -38,7 +38,7 @@ impl MNIST {
             let image_data: Vec<f32> = parts.map(|v| v.parse::<f32>()).collect::<Result<_, _>>()?;
             let mut xi = Array2::from_shape_vec((784, 1), image_data)?;
 
-            // Normalize
+            // Normalize, can assume max = 255.0 & min = 0.0
             xi = xi.mapv(|v| v / 255.0);
 
             x.push(xi);
